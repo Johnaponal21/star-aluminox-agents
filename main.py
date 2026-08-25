@@ -156,7 +156,7 @@ async def listar_inventario(db: Session = Depends(get_db)):
     } for e in equipos]
 
 @app.post(""/admin/inventario"")
-async def agregar_equipo(nombre: str, categoria: str, precio: float, condicion: str = ""remanufacturado"", garantia: int = 6, descripcion: str = """", db: Session = Depends(get_db)):
+async def agregar_equipo(nombre: str, categoria: str, precio: float, condicion: str = "remanufacturado", garantia: int = 6, descripcion: str = "", db: Session = Depends(get_db)):
     equipo = Equipo(nombre=nombre, categoria=categoria, precio=precio, condicion=condicion, garantia_meses=garantia, descripcion=descripcion)
     db.add(equipo)
     db.commit()
